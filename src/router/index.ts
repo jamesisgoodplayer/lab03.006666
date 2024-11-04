@@ -1,23 +1,37 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-
+import { createRouter, createWebHistory } from 'vue-router';
+import PageNotFound from '@/views/PageNotFound.vue';
+import PassengerView from '@/views/PassengerView.vue';
+import PassengerDetails from '@/views/PassengerDetails.vue';
+import AirlineDetails from '@/views/AirlineDetails.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
+      name: 'passenger',
+      component: PassengerView
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue'),
+      path: '/passenger/:id', // 添加乘客详细信息页的路由
+      name: 'PassengerDetails',
+      component: PassengerDetails
     },
-  ],
+    {
+      path: '/passenger',
+      name: 'Passenger',
+      component: PassengerView
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'PageNotFound',
+      component: PageNotFound
+    },
+    {
+      path: '/airline/:id', // 航空公司详细信息页路由
+      name: 'AirlineDetails',
+      component: AirlineDetails
+    },
+  ]
 })
 
-export default router
+export default router;

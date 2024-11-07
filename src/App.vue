@@ -7,6 +7,7 @@ const { message } = storeToRefs(store);
 </script>
 
 <template>
+  <SpeedInsights />
   <div id="layout">
     <header>
       <div id="flashMessage" v-if="message">
